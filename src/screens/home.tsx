@@ -1,12 +1,16 @@
 import * as React from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Text, ScrollView, View, Dimensions } from "react-native";
 
 import AppStyles from "../styles";
-import { SearchBar } from "../components";
+import { SearchBar, CategoryCard } from "../components";
+import { RootStackParamsList } from "../routers/root.router";
 
 const { width } = Dimensions.get("window");
 
-export const HomeScreen = ({}) => {
+export const HomeScreen: React.FC<{
+  navigation: StackNavigationProp<RootStackParamsList>;
+}> = ({ navigation }) => {
   return (
     <ScrollView
       contentContainerStyle={[
@@ -82,8 +86,11 @@ export const HomeScreen = ({}) => {
             justifyContent: "space-between"
           }}
         >
-          <View
-            style={{
+          <CategoryCard
+            onPress={() => {
+              navigation.push("@ROUTERS_CATEGORY_STACK");
+            }}
+            containerStyle={{
               width: (width - 48 - 24) / 2,
               backgroundColor: "#FFEFF0",
               height: 200,
@@ -91,37 +98,48 @@ export const HomeScreen = ({}) => {
               marginBottom: 24,
               flexShrink: 0
             }}
-          ></View>
-          <View
-            style={{
+          />
+          <CategoryCard
+            onPress={() => {
+              navigation.push("@ROUTERS_CATEGORY_STACK");
+            }}
+            containerStyle={{
               width: (width - 48 - 24) / 2,
+              flexShrink: 0,
               backgroundColor: "#F5F4EF",
               height: 240,
               marginBottom: 24,
               borderRadius: 16
             }}
-          ></View>
-          <View
-            style={{
+          />
+          <CategoryCard
+            onPress={() => {
+              navigation.push("@ROUTERS_CATEGORY_STACK");
+            }}
+            containerStyle={{
+              flexShrink: 0,
               width: (width - 48 - 24) / 2,
               backgroundColor: "#F5F4EF",
               height: 240,
+              marginBottom: 24,
               marginTop: -40,
-              marginBottom: 24,
               borderRadius: 16
             }}
-          ></View>
-          <View
-            style={{
+          />
+          <CategoryCard
+            onPress={() => {
+              navigation.push("@ROUTERS_CATEGORY_STACK");
+            }}
+            containerStyle={{
               width: (width - 48 - 24) / 2,
               backgroundColor: "#FFEFF0",
-              height: 240,
+              height: 200,
+              borderRadius: 16,
               marginBottom: 24,
-              borderRadius: 16
+              flexShrink: 0
             }}
-          ></View>
+          />
         </View>
-        <View></View>
       </View>
     </ScrollView>
   );
